@@ -16,7 +16,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: "Playwrite AU QLD", cursive;
+  font-family: "poppins", sans-serif;
 }
 
 .container {
@@ -50,6 +50,7 @@ body {
 h1 {
   font-size: 2rem;
   color: #ffffff;
+  font-family: "Playwrite AU QLD", cursive;
 }
 
 .input-area {
