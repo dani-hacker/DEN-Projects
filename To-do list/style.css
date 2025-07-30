@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+AU+NSW:wght@100..400&family=Playwrite+AU+QLD:wght@100..400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("images/10\ Cloffice\ Ideas\ for\ Full-Time\ WFH\ _\ Angi.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Playwrite AU QLD", cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 300px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.input-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.input-area input {
+  width: 100%;
+  padding: 10px 17px;
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  background-color: rgba(255, 194, 209, 0.1);
+}
+
+.input-area input::placeholder {
+  color: #ffffff;
+  font-size: small;
+}
+
+.input-area button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-left: 10px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 194, 209, 0.1);
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  background-color: rgba(255, 194, 209, 0.2);
+  transform: scale(1.05);
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#tasklist {
+  width: 100%;
+}
+
+#tasklist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 194, 209, 0.1);
+  color: #ffffff;
+  font-size: 1rem;
+  position: relative;
+}
+
+#tasklist li:hover {
+  background-color: rgba(255, 194, 209, 0.2);
+}
+
+#tasklist li .checkbox {
+  min-width: 20px;
+  height: 20px;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  background: transparent;
+  border-radius: 50%;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+#tasklist li .checkbox:checked {
+  background-color: rgba(44, 253, 2, 0.7);
+  border: solid 2px rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+}
+#tasklist li .checkbox:checked::before {
+  content: "\2713";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+#tasklist li span {
+  flex: 1;
+  padding-left: 10px;
+  word-wrap: break-word;
+}
+
+.task-buttons {
+  display: flex;
+  margin-right: auto;
+  gap: 10px;
+}
+
+.task-buttons button {
+  background: rgba(255, 194, 209, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-buttons button:hover {
+  background: rgba(255, 194, 209, 0.5);
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("images/10\ Cloffice\ Ideas\ for\ Full-Time\ WFH\ _\ Angi.jpg") fixed no-repeat center left / cover;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center/right;
+    background-repeat: no-repeat;
+  }
+  .todo-app {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
