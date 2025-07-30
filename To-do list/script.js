@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const taskInput = document.getElementById("task-input");
     const addTaskButton = document.getElementById("add-task-button");
@@ -6,43 +5,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Save tasks to local storage
     const saveTaskToLocalStorage = () => {
-        const tasks = Array. from (taskList.querySelectorAll('li')).map(li => ({
-        text: li.querySelector('span').textContent,
-        completed: li.querySelector('.checkbox').checked
+        const tasks = Array.from(taskList.querySelectorAll('li')).map(li => ({
+            text: li.querySelector('span').textContent,
+            completed: li.querySelector('.checkbox').checked
         }));
         localStorage.setItem('tasks', JSON.stringify(tasks));
-        };
-
+    };
 
     // Load tasks from local storage and display them
-    const loadtasksfromstorage = () => {
+    const loadTasksFromStorage = () => {
         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
         tasks.forEach((task) => {
             const li = document.createElement("li");
             li.innerHTML = `
-            <input type="checkbox" class="checkbox" ${task.completed ? "checked" : ""}>
+                <input type="checkbox" class="checkbox" ${task.completed ? "checked" : ""}>
                 <span>${task.text}</span>
                 <div class="task-buttons">
-                    <button class="edit-btn" style=" background: rgba(255, 238, 0, 0.6);"><i class="fa-solid fa-pen"></i></button>
+                    <button class="edit-btn" style="background: rgba(255, 238, 0, 0.6);"><i class="fa-solid fa-pen"></i></button>
                     <button class="delete-btn" style="background: rgba(255, 0, 0, 0.6);"><i class="fa-solid fa-trash"></i></button>
                 </div>
             `;
+
             // Set the checkbox state based on the task's completed status
             li.querySelector(".checkbox").addEventListener("change", saveTaskToLocalStorage);
-            
+
             li.querySelector(".delete-btn").addEventListener("click", () => {
                 li.remove();
                 saveTaskToLocalStorage();
             });
+
             li.querySelector(".edit-btn").addEventListener("click", () => {
-                const newTaskText =  task.text;
+                const newTaskText = task.text;
                 if (newTaskText !== null && newTaskText.trim() !== "") {
-                    li.querySelector("span").textContent = newTaskText.trim();
-                    li.remove();
+                    li.remove(); // Remove the current task item to edit it
                     taskInput.value = newTaskText.trim(); 
+                    taskInput.focus(); // Set focus to the task input
+                    li.querySelector("span").textContent = newTaskText.trim();
                     saveTaskToLocalStorage();
                 }
             });
+
             taskList.appendChild(li);
         });
     };
@@ -53,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const taskText = taskInput.value.trim();
 
         if (taskText === "") {
-            
             window.alert("Please enter a task.");
             return;
         }
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <input type="checkbox" class="checkbox">
             <span>${taskText}</span>
             <div class="task-buttons">
-                <button class="edit-btn" style=" background: rgba(255, 238, 0, 0.6);"><i class="fa-solid fa-pen"></i></button>
+                <button class="edit-btn" style="background: rgba(255, 238, 0, 0.6);"><i class="fa-solid fa-pen"></i></button>
                 <button class="delete-btn" style="background: rgba(255, 0, 0, 0.6);"><i class="fa-solid fa-trash"></i></button>
             </div>
         `;
@@ -78,20 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
             saveTaskToLocalStorage();
         });
 
-        // Edit button functionality
         li.querySelector(".edit-btn").addEventListener("click", () => {
             const newTaskText = taskText;
             if (newTaskText !== null && newTaskText.trim() !== "") {
-                li.querySelector("span").textContent = newTaskText.trim();
                 li.remove();
                 taskInput.value = newTaskText.trim(); 
-                saveTaskToLocalStorage(); // Save the updated task to local storage
+                taskInput.focus(); // Set focus to the task input
+                li.querySelector("span").textContent = newTaskText.trim();
+                saveTaskToLocalStorage();
             }
         });
 
         // Append the new task to the task list and clear the input
         taskList.appendChild(li);
         taskInput.value = "";
+        saveTaskToLocalStorage(); // Save the new task to local storage
     };
 
     // Event listeners for adding tasks
@@ -101,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             addTask(e);
         }
     });
+
     // Load tasks from local storage on page load
-    loadtasksfromstorage();
+    loadTasksFromStorage();
 });
