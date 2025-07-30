@@ -35,9 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 saveTaskToLocalStorage();
             });
             li.querySelector(".edit-btn").addEventListener("click", () => {
-                const newTaskText = prompt("Edit task:", task.text);
+                const newTaskText =  task.text;
                 if (newTaskText !== null && newTaskText.trim() !== "") {
                     li.querySelector("span").textContent = newTaskText.trim();
+                    li.remove();
+                    taskInput.value = newTaskText.trim(); 
                     saveTaskToLocalStorage();
                 }
             });
