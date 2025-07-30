@@ -183,14 +183,10 @@ h1 {
 
 @media screen and (max-width: 480px) {
   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-image: url("images/10\ Cloffice\ Ideas\ for\ Full-Time\ WFH\ _\ Angi.jpg") fixed no-repeat center left / cover;
-    background-attachment: fixed;
+    background-image: url("images/10 Cloffice Ideas for Full-Time WFH _ Angi.jpg");
+    background-position: right center;
     background-size: cover;
-    background-position: center/right;
+    background-attachment: fixed;
     background-repeat: no-repeat;
   }
   .todo-app {
